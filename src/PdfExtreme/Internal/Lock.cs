@@ -33,7 +33,7 @@ using PdfExtreme.Pdf.Internal;
 namespace PdfExtreme.Internal
 {
     /// <summary>
-    /// Static locking functions to make PDFsharp thread save.
+    /// Static locking functions to make PdfExtreme thread save.
     /// </summary>
     internal static class Lock
     {

@@ -136,7 +136,7 @@ namespace PdfExtreme.Pdf.Advanced
             base.PrepareForSave();
 
             // Use GetGlyphIndices to create the widths array.
-            OpenTypeDescriptor descriptor = (OpenTypeDescriptor)FontDescriptor._descriptor;
+            OpenTypeDescriptor descriptor = FontDescriptor._descriptor;
             StringBuilder w = new StringBuilder("[");
             if (_cmapInfo != null)
             {

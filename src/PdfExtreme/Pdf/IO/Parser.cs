@@ -991,11 +991,13 @@ namespace PdfExtreme.Pdf.IO
             return header;
         }
 
+#nullable enable
+
         /// <summary>
         /// Reads the cross-reference table(s) and their trailer dictionary or
         /// cross-reference streams.
         /// </summary>
-        internal PdfTrailer ReadTrailer()
+        internal PdfTrailer? ReadTrailer()
         {
             int length = _lexer.PdfLength;
 
@@ -1034,7 +1036,7 @@ namespace PdfExtreme.Pdf.IO
             // Read all trailers.
             while (true)
             {
-                PdfTrailer trailer = ReadXRefTableAndTrailer(_document._irefTable);
+                PdfTrailer? trailer = ReadXRefTableAndTrailer(_document._irefTable);
                 // 1st trailer seems to be the best.
                 if (_document._trailer == null)
                     _document._trailer = trailer;
@@ -1052,9 +1054,10 @@ namespace PdfExtreme.Pdf.IO
         /// <summary>
         /// Reads cross reference table(s) and trailer(s).
         /// </summary>
-        private PdfTrailer ReadXRefTableAndTrailer(PdfCrossReferenceTable xrefTable)
+        private PdfTrailer? ReadXRefTableAndTrailer(PdfCrossReferenceTable xrefTable)
         {
-            Debug.Assert(xrefTable != null);
+            if (xrefTable == null)
+                throw new ArgumentNullException(nameof(xrefTable));
 
             Symbol symbol = ScanNextToken();
 
@@ -1127,6 +1130,8 @@ namespace PdfExtreme.Pdf.IO
             }
             return null;
         }
+
+#nullable restore
 
         /// <summary>
         /// Checks the x reference table entry. Returns true if everything is correct.

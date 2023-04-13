@@ -353,11 +353,10 @@ namespace PdfExtreme.Pdf
                         }
                         else
                         {
-                            if (item is PdfReference)
-                                item = ((PdfReference)item).Value;
+                            if (item is PdfReference reference)
+                                item = reference.Value;
 
-                            PdfArray array = item as PdfArray;
-                            if (array != null)
+                            if (item is PdfArray array)
                             {
                                 // It is already an array of content streams.
                                 if (array.IsIndirect)
