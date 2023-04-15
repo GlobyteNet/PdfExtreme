@@ -79,7 +79,7 @@ namespace PdfExtreme.Pdf
         /// Creates a new PDF document with the specified file name. The file is immediately created and keeps
         /// locked until the document is closed, at that time the document is saved automatically.
         /// Do not call Save() for documents created with this constructor, just call Close().
-        /// To open an existing PDF file and import it, use the PdfReader class.
+        /// To open an existing PDF file and import it, use the PdfReader class. Deprecated. Will be removed in a future version due to inconsistency.
         /// </summary>
         public PdfDocument(string filename)
         {
@@ -103,7 +103,7 @@ namespace PdfExtreme.Pdf
         /// Creates a new PDF document using the specified stream.
         /// The stream won't be used until the document is closed, at that time the document is saved automatically.
         /// Do not call Save() for documents created with this constructor, just call Close().
-        /// To open an existing PDF file, use the PdfReader class.
+        /// To open an existing PDF file, use the PdfReader class. Deprecated. Will be removed in a future version due to inconsistency.
         /// </summary>
         public PdfDocument(Stream outputStream)
         {
@@ -168,6 +168,8 @@ namespace PdfExtreme.Pdf
                 if (disposing)
                 {
                     // Dispose managed resources.
+                    if (_outStream != null)
+                        ((IDisposable)_outStream).Dispose();
                 }
                 //PdfDocument.Gob.DetatchDocument(Handle);
             }
@@ -190,30 +192,21 @@ namespace PdfExtreme.Pdf
         /// </summary>
         public DocumentEvents Events
         {
-            get { return _events ?? (_events = new DocumentEvents()); }
+            get { return _events ??= new DocumentEvents(); }
         }
         DocumentEvents _events;
 
         /// <summary>
         /// Gets or sets a value used to distinguish PdfDocument objects.
-        /// The name is not used by PDFsharp.
+        /// The name is not used by PdfExtreme.
         /// </summary>
-        string Name
-        {
-            get { return _name; }
-            set { _name = value; }
-        }
-        string _name = NewName();
+        private string Name { get; set; } = NewName();
 
         /// <summary>
         /// Get a new default name for a new document.
         /// </summary>
         static string NewName()
         {
-#if DEBUG_
-            if (PdfDocument.nameCount == 57)
-                PdfDocument.nameCount.GetType();
-#endif
             return "Document " + _nameCount++;
         }
         static int _nameCount;
@@ -452,23 +445,23 @@ namespace PdfExtreme.Pdf
             PdfDocumentInformation info = Info;
 
             // Add patch level to producer if it is not '0'.
-            string pdfSharpProducer = VersionInfo.Producer;
+            string pdfExtremeProducer = VersionInfo.Producer;
             if (!ProductVersionInfo.VersionPatch.Equals("0"))
-                pdfSharpProducer = ProductVersionInfo.Producer2;
+                pdfExtremeProducer = ProductVersionInfo.Producer2;
 
             // Set Creator if value is undefined.
             if (info.Elements[PdfDocumentInformation.Keys.Creator] == null)
-                info.Creator = pdfSharpProducer;
+                info.Creator = pdfExtremeProducer;
 
             // Keep original producer if file was imported.
             string producer = info.Producer;
             if (producer.Length == 0)
-                producer = pdfSharpProducer;
+                producer = pdfExtremeProducer;
             else
             {
                 // Prevent endless concatenation if file is edited with PDFsharp more than once.
                 if (!producer.StartsWith(VersionInfo.Title))
-                    producer = pdfSharpProducer + " (Original: " + producer + ")";
+                    producer = pdfExtremeProducer + " (Original: " + producer + ")";
             }
             info.Elements.SetString(PdfDocumentInformation.Keys.Producer, producer);
 
@@ -563,7 +556,7 @@ namespace PdfExtreme.Pdf
         internal int _version;
 
         /// <summary>
-        /// Gets the number of pages in the document.
+        /// Gets the number of pages in the document. This property will be removed in a future version. Use Pages.Count instead.
         /// </summary>
         public int PageCount
         {
@@ -578,31 +571,19 @@ namespace PdfExtreme.Pdf
         }
 
         /// <summary>
-        /// Gets the file size of the document.
+        /// Gets the file size of the document. Is only set if the document was read from a file, otherwise 0.
         /// </summary>
-        public long FileSize
-        {
-            get { return _fileSize; }
-        }
-        internal long _fileSize; // TODO: make private
+        public long FileSize { get; internal set; }
 
         /// <summary>
         /// Gets the full qualified file name if the document was read form a file, or an empty string otherwise.
         /// </summary>
-        public string FullPath
-        {
-            get { return _fullPath; }
-        }
-        internal string _fullPath = String.Empty; // TODO: make private
+        public string FullPath { get; internal set; } = string.Empty;
 
         /// <summary>
         /// Gets a Guid that uniquely identifies this instance of PdfDocument.
         /// </summary>
-        public Guid Guid
-        {
-            get { return _guid; }
-        }
-        Guid _guid = Guid.NewGuid();
+        public Guid Guid { get; } = Guid.NewGuid();
 
         internal DocumentHandle Handle
         {
@@ -816,53 +797,6 @@ namespace PdfExtreme.Pdf
         }
         PdfInternals _internals;
 
-        /// <summary>
-        /// Creates a new page and adds it to this document.
-        /// Depending of the IsMetric property of the current region the page size is set to 
-        /// A4 or Letter respectively. If this size is not appropriate it should be changed before
-        /// any drawing operations are performed on the page.
-        /// </summary>
-        public PdfPage AddPage()
-        {
-            if (!CanModify)
-                throw new InvalidOperationException(PSSR.CannotModify);
-            return Catalog.Pages.Add();
-        }
-
-        /// <summary>
-        /// Adds the specified page to this document. If the page is from an external document,
-        /// it is imported to this document. In this case the returned page is not the same
-        /// object as the specified one.
-        /// </summary>
-        public PdfPage AddPage(PdfPage page)
-        {
-            if (!CanModify)
-                throw new InvalidOperationException(PSSR.CannotModify);
-            return Catalog.Pages.Add(page);
-        }
-
-        /// <summary>
-        /// Creates a new page and inserts it in this document at the specified position.
-        /// </summary>
-        public PdfPage InsertPage(int index)
-        {
-            if (!CanModify)
-                throw new InvalidOperationException(PSSR.CannotModify);
-            return Catalog.Pages.Insert(index);
-        }
-
-        /// <summary>
-        /// Inserts the specified page in this document. If the page is from an external document,
-        /// it is imported to this document. In this case the returned page is not the same
-        /// object as the specified one.
-        /// </summary>
-        public PdfPage InsertPage(int index, PdfPage page)
-        {
-            if (!CanModify)
-                throw new InvalidOperationException(PSSR.CannotModify);
-            return Catalog.Pages.Insert(index, page);
-        }
-
         /// <summary>  
         /// Adds a named destination to the document.
         /// </summary>
@@ -921,7 +855,7 @@ namespace PdfExtreme.Pdf
         // Imported Document
         internal Lexer _lexer;
 
-        internal DateTime _creation;
+        internal DateTime _creation; // TODO: Remove and use Info.CreationDate instead.
 
         /// <summary>
         /// Occurs when the specified document is not used anymore for importing content.
@@ -957,7 +891,7 @@ namespace PdfExtreme.Pdf
             public DocumentHandle(PdfDocument document)
             {
                 _weakRef = new WeakReference(document);
-                ID = document._guid.ToString("B").ToUpper();
+                ID = document.Guid.ToString("B").ToUpper();
             }
 
             public bool IsAlive

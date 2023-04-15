@@ -31,7 +31,7 @@ using PdfExtreme.Pdf.Content.Objects;
 namespace PdfExtreme.Pdf.Content
 {
     /// <summary>
-    /// Represents the functionality for reading PDF content streams.
+    /// Represents the functionality for reading PDF content streams. Deprecated. Functionality will be moved to PdfPage.Contents
     /// </summary>
     public static class ContentReader
     {

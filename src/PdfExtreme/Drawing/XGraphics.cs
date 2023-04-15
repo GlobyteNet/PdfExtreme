@@ -563,7 +563,7 @@ namespace PdfExtreme.Drawing  // #??? Clean up
 #if CORE
             //throw new InvalidOperationException("No measure context in CORE build.");
             PdfDocument dummy = new PdfDocument();
-            PdfPage page = dummy.AddPage();
+            PdfPage page = dummy.Pages.Add();
             //XGraphics gfx = new XGraphics(((System.Drawing.Graphics)null, size, pageUnit, pageDirection);
             XGraphics gfx = XGraphics.FromPdfPage(page, XGraphicsPdfPageOptions.Append, pageUnit, pageDirection);
             return gfx;

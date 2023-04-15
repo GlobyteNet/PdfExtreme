@@ -93,10 +93,8 @@ namespace PdfExtreme.Pdf
         {
             Size = RegionInfo.CurrentRegion.IsMetric ? PageSize.A4 : PageSize.Letter;
 
-#pragma warning disable 168
             // Force creation of MediaBox object by invoking property.
-            PdfRectangle rect = MediaBox;
-#pragma warning restore 168
+            _ = MediaBox;
         }
 
         /// <summary>

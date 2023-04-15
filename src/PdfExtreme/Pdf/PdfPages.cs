@@ -102,6 +102,9 @@ namespace PdfExtreme.Pdf
 
         /// <summary>
         /// Creates a new PdfPage, adds it to the end of this document, and returns it.
+        /// Depending of the IsMetric property of the current region the page size is set to 
+        /// A4 or Letter respectively. If this size is not appropriate it should be changed before
+        /// any drawing operations are performed on the page.
         /// </summary>
         public PdfPage Add()
         {
@@ -111,9 +114,12 @@ namespace PdfExtreme.Pdf
         }
 
         /// <summary>
-        /// Adds the specified PdfPage to the end of this document and maybe returns a new PdfPage object.
-        /// The value returned is a new object if the added page comes from a foreign document.
+        /// Adds the specified page to this document. If the page is from an external document, <br />
+        /// it is imported to this document. In this case the returned page is not the same <br />
+        /// object as the specified one.
         /// </summary>
+        /// <param name="page">The page to add.</param>
+        /// <returns>The added page. Probably the new one</returns>
         public PdfPage Add(PdfPage page)
         {
             return Insert(Count, page);
@@ -130,9 +136,13 @@ namespace PdfExtreme.Pdf
         }
 
         /// <summary>
-        /// Inserts the specified PdfPage at the specified position to this document and maybe returns a new PdfPage object.
+        /// Inserts the specified PdfPage at the specified position to this document and maybe returns a new PdfPage object. <br />
         /// The value returned is a new object if the inserted page comes from a foreign document.
         /// </summary>
+        /// <param name="index">The zero-based index at which page should be inserted.</param>
+        /// <param name="page">The page to insert.</param>
+        /// <returns>The inserted page.</returns>
+        /// <exception cref="InvalidOperationException">The page is already part of this document.</exception>
         public PdfPage Insert(int index, PdfPage page)
         {
             if (page == null)
@@ -141,7 +151,7 @@ namespace PdfExtreme.Pdf
             // Is the page already owned by this document?
             if (page.Owner == Owner)
             {
-                // Case: Page is first removed and than inserted again, maybe at another position.
+                // Case: Page is first removed and then inserted again, maybe at another position.
                 int count = Count;
                 // Check if page is not already part of the document.
                 for (int idx = 0; idx < count; idx++)

@@ -214,7 +214,7 @@ namespace PdfExtreme.Pdf.IO
                 document = Open(stream, password, openmode, provider);
                 if (document != null)
                 {
-                    document._fullPath = Path.GetFullPath(path);
+                    document.FullPath = Path.GetFullPath(path);
                 }
             }
             finally
@@ -283,7 +283,7 @@ namespace PdfExtreme.Pdf.IO
                 document = new PdfDocument(lexer);
                 document._state |= DocumentState.Imported;
                 document._openMode = openmode;
-                document._fileSize = stream.Length;
+                document.FileSize = stream.Length;
 
                 // Get file version.
                 byte[] header = new byte[1024];
