@@ -104,8 +104,8 @@ namespace PdfExtreme.Fonts
             //GlyphTypeface wpfGlyphTypeface;
             XFontSource fontSource = null;//CreateFontSource(familyName, isBold, isItalic, out wpfGlyphTypeface, typefaceKey);
 #endif
-            // If no such font exists return null. PDFsharp will fail.
-            if (fontSource == null)
+			// If no such font exists return null. PdfExtreme will fail.
+			if (fontSource == null)
                 return null;
 
             //#if (CORE || GDI) && !WPF
@@ -318,7 +318,7 @@ namespace PdfExtreme.Fonts
         /// </summary>
         internal static XFontSource CreateFontSource(string familyName, bool isBold, bool isItalic)
         {
-            // PDFsharp does not provide a default font because this would blow up the assembly
+            // PdfExtreme does not provide a default font because this would blow up the assembly
             // unnecessarily if the font is not needed. Provide your own font resolver to generate
             // PDF files containing text.
             return null;
@@ -331,5 +331,5 @@ namespace PdfExtreme.Fonts
             throw new NotImplementedException();
         }
 #endif
-    }
+	}
 }

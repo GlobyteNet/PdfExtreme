@@ -83,7 +83,6 @@ namespace PdfExtreme.Pdf.Advanced
             public ImageSelector(XImage image)
             {
                 // HACK: implement a way to identify images when they are reused
-                // TODO 4STLA Implementation that calculates MD5 hashes for images generated for the images can be found here: http://forum.pdfsharp.net/viewtopic.php?p=6959#p6959
                 if (image._path == null)
                     image._path = "*" + Guid.NewGuid().ToString("B");
 

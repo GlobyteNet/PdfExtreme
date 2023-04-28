@@ -31,11 +31,11 @@ using PdfExtreme.Pdf.Internal;
 
 namespace PdfExtreme.Pdf
 {
-    /// <summary>
-    /// Represents an indirect text string value. This type is not used by PDFsharp. If it is imported from
-    /// an external PDF file, the value is converted into a direct object.
-    /// </summary>
-    [DebuggerDisplay("({Value})")]
+	/// <summary>
+	/// Represents an indirect text string value. This type is not used by PdfExtreme. If it is imported from
+	/// an external PDF file, the value is converted into a direct object.
+	/// </summary>
+	[DebuggerDisplay("({Value})")]
     public sealed class PdfStringObject : PdfObject
     {
         /// <summary>

@@ -44,10 +44,10 @@ namespace PdfExtreme.Fonts.OpenType
         Apple, Mac, Iso, Win
     }
 
-    /// <summary>
-    /// Only Symbol and Unicode is used by PDFsharp.
-    /// </summary>
-    internal enum WinEncodingId
+	/// <summary>
+	/// Only Symbol and Unicode is used by PdfExtreme.
+	/// </summary>
+	internal enum WinEncodingId
     {
         Symbol, Unicode
     }
@@ -196,7 +196,7 @@ namespace PdfExtreme.Fonts.OpenType
                     }
                 }
                 if (!success)
-                    throw new InvalidOperationException("Font has no usable platform or encoding ID. It cannot be used with PDFsharp.");
+                    throw new InvalidOperationException("Font has no usable platform or encoding ID. It cannot be used with PdfExtreme.");
             }
             catch (Exception ex)
             {

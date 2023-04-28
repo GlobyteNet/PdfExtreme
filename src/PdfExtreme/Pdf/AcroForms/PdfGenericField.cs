@@ -27,10 +27,10 @@
 
 namespace PdfExtreme.Pdf.AcroForms
 {
-    /// <summary>
-    /// Represents a generic field. Used for AcroForm dictionaries unknown to PDFsharp.
-    /// </summary>
-    public sealed class PdfGenericField : PdfAcroField
+	/// <summary>
+	/// Represents a generic field. Used for AcroForm dictionaries unknown to PdfExtreme.
+	/// </summary>
+	public sealed class PdfGenericField : PdfAcroField
     {
         /// <summary>
         /// Initializes a new instance of PdfGenericField.

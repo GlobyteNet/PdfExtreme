@@ -90,10 +90,10 @@ namespace PdfExtreme.Pdf
             set { Elements.SetString(Keys.Creator, value); }
         }
 
-        /// <summary>
-        /// Gets the producer application (for example, PDFsharp).
-        /// </summary>
-        public string Producer
+		/// <summary>
+		/// Gets the producer application (for example, PdfExtreme).
+		/// </summary>
+		public string Producer
         {
             get { return Elements.GetString(Keys.Producer); }
         }

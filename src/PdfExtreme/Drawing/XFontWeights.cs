@@ -25,7 +25,7 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
 // DEALINGS IN THE SOFTWARE.
 
-// Not used in PDFsharp 1.x.
+// Not used anymore
 
 namespace PdfExtreme.Drawing
 {
@@ -43,7 +43,7 @@ namespace PdfExtreme.Drawing
         ExtraBlack = 950,
     }
 
-#if true_  // PDFSHARP20
+#if true_
     /// <summary>
     /// Defines a set of static predefined XFontWeight values.
     /// </summary>

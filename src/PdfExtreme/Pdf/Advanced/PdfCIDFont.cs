@@ -101,8 +101,8 @@ namespace PdfExtreme.Pdf.Advanced
                 GetType();
             }
 #endif
-            // CID fonts must be always embedded. PDFsharp embeds automatically a subset.
-            OpenTypeFontface subSet = null;
+			// CID fonts must be always embedded. PdfExtreme embeds automatically a subset.
+			OpenTypeFontface subSet = null;
             if (FontDescriptor._descriptor.FontFace.loca == null)
                 subSet = FontDescriptor._descriptor.FontFace;
             else

@@ -232,6 +232,7 @@ namespace PdfExtreme.Pdf.Content.Objects  // TODO: split into single files
             get { return _items[index]; }
             set { _items[index] = value; }
         }
+
         #endregion
 
         #region ICollection Members

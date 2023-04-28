@@ -98,8 +98,8 @@ namespace PdfExtreme.Pdf
             if (outline == null)
                 throw new ArgumentNullException("outline");
 
-            // DestinationPage is optional. PDFsharp does not yet support outlines with action ("/A") instead of destination page ("/DEST")
-            if (outline.DestinationPage != null && !ReferenceEquals(Owner, outline.DestinationPage.Owner))
+			// DestinationPage is optional. PdfExtreme does not yet support outlines with action ("/A") instead of destination page ("/DEST")
+			if (outline.DestinationPage != null && !ReferenceEquals(Owner, outline.DestinationPage.Owner))
                 throw new ArgumentException("Destination page must belong to this document.");
 
             //// TODO check the parent problems...
@@ -287,8 +287,8 @@ namespace PdfExtreme.Pdf
             if (outline == null)
                 throw new ArgumentNullException("outline");
 
-            // DestinationPage is optional. PDFsharp does not yet support outlines with action ("/A") instead of destination page ("/DEST")
-            if (outline.DestinationPage != null && !ReferenceEquals(Owner, outline.DestinationPage.Owner))
+			// DestinationPage is optional. PdfExtreme does not yet support outlines with action ("/A") instead of destination page ("/DEST")
+			if (outline.DestinationPage != null && !ReferenceEquals(Owner, outline.DestinationPage.Owner))
                 throw new ArgumentException("Destination page must belong to this document.");
 
             // TODO check the parent problems...

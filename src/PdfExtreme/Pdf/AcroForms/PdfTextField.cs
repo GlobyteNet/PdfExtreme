@@ -188,7 +188,7 @@ namespace PdfExtreme.Pdf.AcroForms
             //"   <rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"> " + '\n' +
             //"      <rdf:Description rdf:about=\"\" " + '\n' +
             //"            xmlns:pdf=\"http://ns.adobe.com/pdf/1.3/\"> " + '\n' +
-            //"         <pdf:Producer>PDFsharp 1.40.2150-g (www.pdfsharp.com) (Original: Powered By Crystal)</pdf:Producer> " + '\n' +
+            //"         <pdf:Producer>PdfExtreme 1.40.2150-g (Original: Powered By Crystal)</pdf:Producer> " + '\n' +
             //"      </rdf:Description> " + '\n' +
             //"      <rdf:Description rdf:about=\"\" " + '\n' +
             //"            xmlns:xap=\"http://ns.adobe.com/xap/1.0/\"> " + '\n' +
@@ -233,7 +233,7 @@ namespace PdfExtreme.Pdf.AcroForms
 
 
 #else
-            PdfRectangle rect = Elements.GetRectangle(PdfAnnotation.Keys.Rect);
+			PdfRectangle rect = Elements.GetRectangle(PdfAnnotation.Keys.Rect);
             XForm form = new XForm(_document, rect.Size);
             XGraphics gfx = XGraphics.FromForm(form);
 

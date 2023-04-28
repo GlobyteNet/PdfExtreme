@@ -98,17 +98,6 @@ namespace PdfExtreme.Pdf
         }
 
         /// <summary>
-        /// Gets or sets a user defined object that contains arbitrary information associated with this PDF page.
-        /// The tag is not used by PDFsharp.
-        /// </summary>
-        public object Tag
-        {
-            get { return _tag; }
-            set { _tag = value; }
-        }
-        object _tag;
-
-        /// <summary>
         /// Closes the page. A closed page cannot be modified anymore and it is not possible to
         /// get an XGraphics object for a closed page. Closing a page is not required, but may save
         /// resources if the document has many pages. 
@@ -306,13 +295,13 @@ namespace PdfExtreme.Pdf
             }
         }
 
-        /// <summary>
-        /// Gets or sets the /Rotate entry of the PDF page. The value is the number of degrees by which the page 
-        /// should be rotated clockwise when displayed or printed. The value must be a multiple of 90.
-        /// PDFsharp does not set this value, but for imported pages this value can be set and must be taken
-        /// into account when adding graphic to such a page.
-        /// </summary>
-        public int Rotate
+		/// <summary>
+		/// Gets or sets the /Rotate entry of the PDF page. The value is the number of degrees by which the page 
+		/// should be rotated clockwise when displayed or printed. The value must be a multiple of 90.
+		/// PdfExtreme does not set this value, but for imported pages this value can be set and must be taken
+		/// into account when adding graphic to such a page.
+		/// </summary>
+		public int Rotate
         {
             get { return _elements.GetInteger(InheritablePageKeys.Rotate); }
             set
@@ -667,7 +656,7 @@ namespace PdfExtreme.Pdf
 
 #if true
             // Add transparency group to prevent rendering problems of Adobe viewer.
-            // Update (PDFsharp 1.50 beta 3): Add transparency group only if ColorMode is defined.
+            // Update: Add transparency group only if ColorMode is defined.
             // Rgb is the default for the ColorMode, but if user sets it to Undefined then
             // we respect this and skip the transparency group.
             TransparencyUsed = true; // TODO: check XObjects

@@ -30,11 +30,11 @@ using PdfExtreme.Pdf.IO;
 
 namespace PdfExtreme.Pdf
 {
-    /// <summary>
-    /// Represents an indirect real value. This type is not used by PDFsharp. If it is imported from
-    /// an external PDF file, the value is converted into a direct object.
-    /// </summary>
-    public sealed class PdfRealObject : PdfNumberObject
+	/// <summary>
+	/// Represents an indirect real value. This type is not used by PdfExtreme. If it is imported from
+	/// an external PDF file, the value is converted into a direct object.
+	/// </summary>
+	public sealed class PdfRealObject : PdfNumberObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="PdfRealObject"/> class.

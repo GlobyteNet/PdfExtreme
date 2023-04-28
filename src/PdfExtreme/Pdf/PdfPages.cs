@@ -623,9 +623,9 @@ namespace PdfExtreme.Pdf
 
             if (string.IsNullOrEmpty(type))
             {
-                // Type is required. If type is missing, assume it is "/Page" and hope it will work.
-                // TODO Implement a "Strict" mode in PDFsharp and don't do this in "Strict" mode.
-                PdfPage.InheritValues(kid, values);
+				// Type is required. If type is missing, assume it is "/Page" and hope it will work.
+				// TODO Implement a "Strict" mode in PdfExtreme and don't do this in "Strict" mode.
+				PdfPage.InheritValues(kid, values);
                 return new PdfDictionary[] { kid };
             }
 

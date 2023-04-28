@@ -29,13 +29,11 @@ using System;
 
 namespace PdfExtreme
 {
-    /// <summary>
-    /// Base class of all exceptions in the PDFsharp frame work.
-    /// </summary>
-    public class PdfExtremeException : Exception
+	/// <summary>
+	/// Base class of all exceptions in the PdfExtreme library.
+	/// </summary>
+	public class PdfExtremeException : Exception
     {
-        // The class is not yet used
-
         /// <summary>
         /// Initializes a new instance of the <see cref="PdfExtremeException"/> class.
         /// </summary>

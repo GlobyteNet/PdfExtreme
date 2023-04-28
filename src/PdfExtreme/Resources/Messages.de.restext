@@ -1,4 +1,4 @@
-﻿; PDFsharp string resources (German)
+﻿; PdfExtreme string resources (German)
 ;
 ; Must be saved as Unicode (UTF-8 with signature) to force resgen.exe to process German umlauts.
 
@@ -17,4 +17,4 @@ UserOrOwnerPasswordRequired = Zum Verschlüsseln des Dokuments muss ein Kennwort
 ; ----- PdfParser Messages ------------------------------------------------------------------------
 
 UnexpectedToken = Token '{0}' wird an dieser Stelle nicht erwartet.
-UnknownEncryption = Das PDF-Dokument ist mit einer von PDFsharp nicht unterstützten Verschlüsselung geschützt.
+UnknownEncryption = Das PDF-Dokument ist mit einer von PdfExtreme nicht unterstützten Verschlüsselung geschützt.

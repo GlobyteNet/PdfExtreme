@@ -45,7 +45,7 @@ namespace PdfExtreme.Fonts.OpenType
 {
     /// <summary>
     /// The OpenType font descriptor.
-    /// Currently the only font type PDFsharp supports.
+    /// Currently the only font type PdfExtreme supports.
     /// </summary>
     internal sealed class OpenTypeDescriptor : FontDescriptor
     {

@@ -84,12 +84,12 @@ namespace PdfExtreme.Pdf
         }
         PdfFlateEncodeMode _flateEncodeMode = PdfFlateEncodeMode.Default;
 
-        /// <summary>
-        /// Gets or sets a value indicating whether to compress bilevel images using CCITT compression.
-        /// With true, PDFsharp will try FlateDecode CCITT and will use the smallest one or a combination of both.
-        /// With false, PDFsharp will always use FlateDecode only - files may be a few bytes larger, but file creation is faster.
-        /// </summary>
-        public bool EnableCcittCompressionForBilevelImages
+		/// <summary>
+		/// Gets or sets a value indicating whether to compress bilevel images using CCITT compression.
+		/// With true, PdfExtreme will try FlateDecode CCITT and will use the smallest one or a combination of both.
+		/// With false, PdfExtreme will always use FlateDecode only - files may be a few bytes larger, but file creation is faster.
+		/// </summary>
+		public bool EnableCcittCompressionForBilevelImages
         {
             get { return _enableCcittCompressionForBilevelImages; }
             set { _enableCcittCompressionForBilevelImages = value; }

@@ -41,7 +41,7 @@ namespace PdfExtreme.Fonts
         /// <returns>Information about the physical font, or null if the request cannot be satisfied.</returns>
         FontResolverInfo ResolveTypeface(string familyName, bool isBold, bool isItalic);
 
-        //FontResolverInfo ResolveTypeface(Typeface); TODO in PDFsharp 2.0
+        //FontResolverInfo ResolveTypeface(Typeface); TODO in future versions
 
         /// <summary>
         /// Gets the bytes of a physical font with specified face name.

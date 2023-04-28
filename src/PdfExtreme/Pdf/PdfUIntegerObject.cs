@@ -31,11 +31,11 @@ using PdfExtreme.Pdf.IO;
 
 namespace PdfExtreme.Pdf
 {
-    /// <summary>
-    /// Represents an indirect integer value. This type is not used by PDFsharp. If it is imported from
-    /// an external PDF file, the value is converted into a direct object.
-    /// </summary>
-    [DebuggerDisplay("({Value})")]
+	/// <summary>
+	/// Represents an indirect integer value. This type is not used by PdfExtreme. If it is imported from
+	/// an external PDF file, the value is converted into a direct object.
+	/// </summary>
+	[DebuggerDisplay("({Value})")]
     public sealed class PdfUIntegerObject : PdfNumberObject
     {
         /// <summary>

@@ -48,10 +48,10 @@ namespace PdfExtreme.Pdf
         /// </summary>
         protected PdfObject(PdfDocument document)
         {
-            // Calling a virtual member in a constructor is dangerous.
-            // In PDFsharp Document is overridden in PdfPage and the code is checked to be save
-            // when called for a not completely initialized object.
-            Document = document;
+			// Calling a virtual member in a constructor is dangerous.
+			// In PdfExtreme Document is overridden in PdfPage and the code is checked to be save
+			// when called for a not completely initialized object.
+			Document = document;
         }
 
         /// <summary>
@@ -545,11 +545,11 @@ namespace PdfExtreme.Pdf
             }
             else
             {
-                // Case: The item is some other indirect object.
-                // Indirect integers, booleans, etc. are allowed, but PDFsharp do not create them.
-                // If such objects occur in imported PDF files from other producers, nothing more is to do.
-                // The owner was already set, which is double checked by the assertions below.
-                if (value is PdfNameObject || value is PdfStringObject || value is PdfBooleanObject || value is PdfIntegerObject || value is PdfNumberObject)
+				// Case: The item is some other indirect object.
+				// Indirect integers, booleans, etc. are allowed, but PdfExtreme do not create them.
+				// If such objects occur in imported PDF files from other producers, nothing more is to do.
+				// The owner was already set, which is double checked by the assertions below.
+				if (value is PdfNameObject || value is PdfStringObject || value is PdfBooleanObject || value is PdfIntegerObject || value is PdfNumberObject)
                 {
                     Debug.Assert(value.IsIndirect);
                     Debug.Assert(value.Owner == owner);
@@ -559,11 +559,11 @@ namespace PdfExtreme.Pdf
             }
         }
 
-        /// <summary>
-        /// Ensure for future versions of PDFsharp not to forget code for a new kind of PdfItem.
-        /// </summary>
-        /// <param name="item">The item.</param>
-        [Conditional("DEBUG")]
+		/// <summary>
+		/// Ensure for future versions of PdfExtreme not to forget code for a new kind of PdfItem.
+		/// </summary>
+		/// <param name="item">The item.</param>
+		[Conditional("DEBUG")]
         static void DebugCheckNonObjects(PdfItem item)
         {
             if (item is PdfName)
@@ -592,8 +592,8 @@ namespace PdfExtreme.Pdf
         {
             get { return _iref; }
 
-            // Setting the reference outside PDFsharp is not considered as a valid operation.
-            internal set { _iref = value; }
+			// Setting the reference outside PdfExtreme is not considered as a valid operation.
+			internal set { _iref = value; }
         }
         PdfReference _iref;
     }

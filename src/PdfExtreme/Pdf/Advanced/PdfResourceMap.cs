@@ -61,7 +61,7 @@ namespace PdfExtreme.Pdf.Advanced
         /// </summary>
         internal void CollectResourceNames(Dictionary<string, object> usedResourceNames)
         {
-            // ?TODO: Imported resources (e.g. fonts) can be reused, but I think this is rather difficult. Will be an issue in PDFsharp 2.0.
+            // ?TODO: Imported resources (e.g. fonts) can be reused, but I think this is rather difficult. Will be an issue in future versions.
             PdfName[] names = Elements.KeyNames;
             foreach (PdfName name in names)
                 usedResourceNames.Add(name.ToString(), null);

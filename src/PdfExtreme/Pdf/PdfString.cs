@@ -47,10 +47,10 @@ namespace PdfExtreme.Pdf
         /// </summary>
         RawEncoding = PdfStringFlags.RawEncoding,
 
-        /// <summary>
-        /// Not yet used by PDFsharp.
-        /// </summary>
-        StandardEncoding = PdfStringFlags.StandardEncoding,
+		/// <summary>
+		/// Not yet used by PdfExtreme.
+		/// </summary>
+		StandardEncoding = PdfStringFlags.StandardEncoding,
 
         /// <summary>
         /// The characters of the string are actually bytes with PDF document encoding.
@@ -66,15 +66,15 @@ namespace PdfExtreme.Pdf
         /// </summary>
         WinAnsiEncoding = PdfStringFlags.WinAnsiEncoding,
 
-        /// <summary>
-        /// Not yet used by PDFsharp.
-        /// </summary>
-        MacRomanEncoding = PdfStringFlags.MacExpertEncoding,
+		/// <summary>
+		/// Not yet used by PdfExtreme.
+		/// </summary>
+		MacRomanEncoding = PdfStringFlags.MacExpertEncoding,
 
-        /// <summary>
-        /// Not yet used by PDFsharp.
-        /// </summary>
-        MacExpertEncoding = PdfStringFlags.MacExpertEncoding,
+		/// <summary>
+		/// Not yet used by PdfExtreme.
+		/// </summary>
+		MacExpertEncoding = PdfStringFlags.MacExpertEncoding,
 
         /// <summary>
         /// The characters of the string are Unicode characters.

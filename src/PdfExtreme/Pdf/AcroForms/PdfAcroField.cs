@@ -360,13 +360,13 @@ namespace PdfExtreme.Pdf.AcroForms
                 }
             }
 
-            /// <summary>
-            /// Gets a field from the collection. For your convenience an instance of a derived class like
-            /// PdfTextField or PdfCheckBox is returned if PDFsharp can guess the actual type of the dictionary.
-            /// If the actual type cannot be guessed by PDFsharp the function returns an instance
-            /// of PdfGenericField.
-            /// </summary>
-            public PdfAcroField this[int index]
+			/// <summary>
+			/// Gets a field from the collection. For your convenience an instance of a derived class like
+			/// PdfTextField or PdfCheckBox is returned if PdfExtreme can guess the actual type of the dictionary.
+			/// If the actual type cannot be guessed by PdfExtreme the function returns an instance
+			/// of PdfGenericField.
+			/// </summary>
+			public PdfAcroField this[int index]
             {
                 get
                 {
@@ -412,12 +412,12 @@ namespace PdfExtreme.Pdf.AcroForms
                 return null;
             }
 
-            /// <summary>
-            /// Create a derived type like PdfTextField or PdfCheckBox if possible.
-            /// If the actual cannot be guessed by PDFsharp the function returns an instance
-            /// of PdfGenericField.
-            /// </summary>
-            PdfAcroField CreateAcroField(PdfDictionary dict)
+			/// <summary>
+			/// Create a derived type like PdfTextField or PdfCheckBox if possible.
+			/// If the actual cannot be guessed by PdfExtreme the function returns an instance
+			/// of PdfGenericField.
+			/// </summary>
+			PdfAcroField CreateAcroField(PdfDictionary dict)
             {
                 string ft = dict.Elements.GetName(Keys.FT);
                 PdfAcroFieldFlags flags = (PdfAcroFieldFlags)dict.Elements.GetInteger(Keys.Ff);

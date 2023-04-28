@@ -31,12 +31,12 @@ using PdfExtreme.Pdf.IO;
 
 namespace PdfExtreme.Pdf
 {
-    /// <summary>
-    /// Represents an indirect name value. This type is not used by PDFsharp. If it is imported from
-    /// an external PDF file, the value is converted into a direct object. Acrobat sometime uses indirect
-    /// names to save space, because an indirect reference to a name may be shorter than a long name.
-    /// </summary>
-    [DebuggerDisplay("({Value})")]
+	/// <summary>
+	/// Represents an indirect name value. This type is not used by PdfExtreme. If it is imported from
+	/// an external PDF file, the value is converted into a direct object. Acrobat sometime uses indirect
+	/// names to save space, because an indirect reference to a name may be shorter than a long name.
+	/// </summary>
+	[DebuggerDisplay("({Value})")]
     public sealed class PdfNameObject : PdfObject
     {
         /// <summary>

@@ -65,10 +65,10 @@ namespace PdfExtreme.Pdf.Advanced
                 Debug.Assert(form.IsTemplate, "An XPdfForm must not have a PdfFormXObject.");
                 if (ReferenceEquals(form._pdfForm.Owner, Owner))
                     return form._pdfForm;
-                //throw new InvalidOperationException("Because of a current limitation of PDFsharp an XPdfForm object can be used only within one single PdfDocument.");
+				//throw new InvalidOperationException("Because of a current limitation of PdfExtreme an XPdfForm object can be used only within one single PdfDocument.");
 
-                // Dispose PdfFromXObject when document has changed
-                form._pdfForm = null;
+				// Dispose PdfFromXObject when document has changed
+				form._pdfForm = null;
             }
 
             XPdfForm pdfForm = form as XPdfForm;

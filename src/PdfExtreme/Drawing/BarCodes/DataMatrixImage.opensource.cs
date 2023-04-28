@@ -35,15 +35,6 @@ using System.Windows;
 using System.Windows.Media;
 #endif
 
-
-
-// ========================================================================================
-// ========================================================================================
-// ===== THIS CLASS IS A FAKE. THE OPEN SOURCE VERSION OF PDFSHARP DID NOT IMPLEMENT  =====
-// ===== A DATAMATRIX CODE. THIS IS BECAUSE OF THE ISO COPYRIGHT.                     =====  
-// ========================================================================================
-// ========================================================================================
-
 // Even if it looks like a datamatrix code it is just random
 
 #if false
@@ -51,11 +42,7 @@ using System.Windows.Media;
 namespace PdfExtreme.Drawing.BarCodes
 {
     /// <summary>
-    /// Creates the XImage object for a DataMatrix.
-    /// Important note for OpenSource version of PDFsharp:
-    ///   The generated image object only contains random data.
-    ///   If you need the correct implementation as defined in the ISO/IEC 16022:2000 specification,
-    ///   please contact empira Software GmbH via www.pdfsharp.com.
+    /// Creates the XImage object for a DataMatrix. Not a real DataMatrix, just a random image.
     /// </summary>
     internal class DataMatrixImage
     {

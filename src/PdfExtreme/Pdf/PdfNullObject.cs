@@ -29,11 +29,11 @@ using PdfExtreme.Pdf.IO;
 
 namespace PdfExtreme.Pdf
 {
-    /// <summary>
-    /// Represents an indirect null value. This type is not used by PDFsharp, but at least
-    /// one tool from Adobe creates PDF files with a null object.
-    /// </summary>
-    public sealed class PdfNullObject : PdfObject
+	/// <summary>
+	/// Represents an indirect null value. This type is not used by PdfExtreme, but at least
+	/// one tool from Adobe creates PDF files with a null object.
+	/// </summary>
+	public sealed class PdfNullObject : PdfObject
     {
         // Reference: 3.2.8  Null Object / Page 63
 

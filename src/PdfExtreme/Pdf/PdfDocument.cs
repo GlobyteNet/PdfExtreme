@@ -75,48 +75,6 @@ namespace PdfExtreme.Pdf
             Info.CreationDate = _creation;
         }
 
-        /// <summary>
-        /// Creates a new PDF document with the specified file name. The file is immediately created and keeps
-        /// locked until the document is closed, at that time the document is saved automatically.
-        /// Do not call Save() for documents created with this constructor, just call Close().
-        /// To open an existing PDF file and import it, use the PdfReader class. Deprecated. Will be removed in a future version due to inconsistency.
-        /// </summary>
-        public PdfDocument(string filename)
-        {
-            //PdfDocument.Gob.AttatchDocument(Handle);
-
-            _creation = DateTime.Now;
-            _state = DocumentState.Created;
-            _version = 14;
-            Initialize();
-            Info.CreationDate = _creation;
-
-            // TODO 4STLA: encapsulate the whole c'tor with #if !NETFX_CORE?
-#if !NETFX_CORE
-            _outStream = new FileStream(filename, FileMode.Create);
-#else
-            throw new NotImplementedException();
-#endif
-        }
-
-        /// <summary>
-        /// Creates a new PDF document using the specified stream.
-        /// The stream won't be used until the document is closed, at that time the document is saved automatically.
-        /// Do not call Save() for documents created with this constructor, just call Close().
-        /// To open an existing PDF file, use the PdfReader class. Deprecated. Will be removed in a future version due to inconsistency.
-        /// </summary>
-        public PdfDocument(Stream outputStream)
-        {
-            //PdfDocument.Gob.AttatchDocument(Handle);
-
-            _creation = DateTime.Now;
-            _state = DocumentState.Created;
-            Initialize();
-            Info.CreationDate = _creation;
-
-            _outStream = outputStream;
-        }
-
         internal PdfDocument(Lexer lexer)
         {
             //PdfDocument.Gob.AttatchDocument(Handle);
@@ -168,24 +126,11 @@ namespace PdfExtreme.Pdf
                 if (disposing)
                 {
                     // Dispose managed resources.
-                    if (_outStream != null)
-                        ((IDisposable)_outStream).Dispose();
                 }
                 //PdfDocument.Gob.DetatchDocument(Handle);
             }
             _state = DocumentState.Disposed;
         }
-
-        /// <summary>
-        /// Gets or sets a user defined object that contains arbitrary information associated with this document.
-        /// The tag is not used by PDFsharp.
-        /// </summary>
-        public object Tag
-        {
-            get { return _tag; }
-            set { _tag = value; }
-        }
-        object _tag;
 
         /// <summary>
         /// Encapsulates the document's events.
@@ -215,33 +160,6 @@ namespace PdfExtreme.Pdf
         {
             //get {return _state == DocumentState.Created || _state == DocumentState.Modifyable;}
             get { return true; }
-        }
-
-        /// <summary>
-        /// Closes this instance.
-        /// </summary>
-        public void Close()
-        {
-            if (!CanModify)
-                throw new InvalidOperationException(PSSR.CannotModify);
-
-            if (_outStream != null)
-            {
-                // Get security handler if document gets encrypted
-                PdfStandardSecurityHandler securityHandler = null;
-                if (SecuritySettings.DocumentSecurityLevel != PdfDocumentSecurityLevel.None)
-                    securityHandler = SecuritySettings.SecurityHandler;
-
-                PdfWriter writer = new PdfWriter(_outStream, securityHandler);
-                try
-                {
-                    DoSave(writer);
-                }
-                finally
-                {
-                    writer.Close();
-                }
-            }
         }
 
 #if true //!NETFX_CORE
@@ -349,7 +267,7 @@ namespace PdfExtreme.Pdf
         /// <summary>
         /// Saves the document to the specified stream.
         /// The stream is not closed by this function.
-        /// (Older versions of PDFsharp closes the stream. That was not very useful.)
+        /// (Older versions of PdfExreme closes the stream. That was not very useful.)
         /// </summary>
         public void Save(Stream stream)
         {
@@ -363,11 +281,6 @@ namespace PdfExtreme.Pdf
         {
             if (_pages == null || _pages.Count == 0)
             {
-                if (_outStream != null)
-                {
-                    // Give feedback if the wrong constructor was used.
-                    throw new InvalidOperationException("Cannot save a PDF document with no pages. Do not use \"public PdfDocument(string filename)\" or \"public PdfDocument(Stream outputStream)\" if you want to open an existing PDF document from a file or stream; use PdfReader.Open() for that purpose.");
-                }
                 throw new InvalidOperationException("Cannot save a PDF document with no pages.");
             }
 
@@ -406,10 +319,6 @@ namespace PdfExtreme.Pdf
                 for (int idx = 0; idx < count; idx++)
                 {
                     PdfReference iref = irefs[idx];
-#if DEBUG_
-                    if (iref.ObjectNumber == 378)
-                        GetType();
-#endif
                     iref.Position = writer.Position;
                     iref.Value.WriteObject(writer);
                 }
@@ -459,7 +368,7 @@ namespace PdfExtreme.Pdf
                 producer = pdfExtremeProducer;
             else
             {
-                // Prevent endless concatenation if file is edited with PDFsharp more than once.
+                // Prevent endless concatenation if file is edited with PdfExtreme more than once.
                 if (!producer.StartsWith(VersionInfo.Title))
                     producer = pdfExtremeProducer + " (Original: " + producer + ")";
             }
@@ -850,7 +759,6 @@ namespace PdfExtreme.Pdf
 
         internal PdfTrailer _trailer;
         internal PdfCrossReferenceTable _irefTable;
-        internal Stream _outStream;
 
         // Imported Document
         internal Lexer _lexer;

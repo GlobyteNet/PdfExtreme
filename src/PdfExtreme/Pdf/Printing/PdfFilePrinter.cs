@@ -186,7 +186,7 @@ namespace PdfExtreme.Pdf.Printing
         /// <summary>
         /// For reasons only Adobe knows the Reader seams to open and shows the document instead of printing it
         /// when it was not already running.
-        /// If you use PDFsharp and have any suggestions to circumvent this function, please let us know.
+        /// If you use this library and have any suggestions to circumvent this function, please let us know.
         /// </summary>
         void DoSomeVeryDirtyHacksToMakeItWork()
         {

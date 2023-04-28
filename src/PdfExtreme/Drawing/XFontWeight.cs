@@ -34,11 +34,11 @@ using System.Windows;
 using System.Windows.Media;
 #endif
 
-// Not used in PDFsharp 1.x.
+// Not used anymore
 
 namespace PdfExtreme.Drawing
 {
-#if true_  // PDFSHARP20
+#if true_ 
     /// <summary>
     /// Defines the density of a typeface, in terms of the lightness or heaviness of the strokes.
     /// </summary>

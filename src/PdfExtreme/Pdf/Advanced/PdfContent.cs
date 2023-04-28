@@ -33,12 +33,12 @@ using PdfExtreme.Pdf.IO;
 
 namespace PdfExtreme.Pdf.Advanced
 {
-    /// <summary>
-    /// Represents the content of a page. PDFsharp supports only one content stream per page.
-    /// If an imported page has an array of content streams, the streams are concatenated to
-    /// one single stream.
-    /// </summary>
-    public sealed class PdfContent : PdfDictionary
+	/// <summary>
+	/// Represents the content of a page. PdfExtreme supports only one content stream per page.
+	/// If an imported page has an array of content streams, the streams are concatenated to
+	/// one single stream.
+	/// </summary>
+	public sealed class PdfContent : PdfDictionary
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="PdfContent"/> class.

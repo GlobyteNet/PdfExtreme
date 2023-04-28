@@ -27,7 +27,7 @@
 
 namespace PdfExtreme.Drawing
 {
-#if PDFSHARP20
+#if false
     enum FontStretchValues
     {
         UltraCondensed = 1,

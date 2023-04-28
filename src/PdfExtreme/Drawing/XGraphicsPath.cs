@@ -876,7 +876,6 @@ namespace PdfExtreme.Drawing
                 Lock.EnterGdiPlus();
                 // If rect is empty GDI+ removes the rect from the path.
                 // This is not intended if the path is used for clipping.
-                // See http://forum.pdfsharp.net/viewtopic.php?p=9433#p9433
                 // _gdipPath.AddRectangle(rect.ToRectangleF());
 
                 // Draw the rectangle manually.

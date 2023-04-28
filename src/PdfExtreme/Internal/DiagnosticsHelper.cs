@@ -122,7 +122,7 @@ namespace PdfExtreme.Internal
     }
 
     /// <summary>
-    /// Internal stuff for development of PDFsharp.
+    /// Internal stuff for development.
     /// </summary>
     public static class FontsDevHelper
     {

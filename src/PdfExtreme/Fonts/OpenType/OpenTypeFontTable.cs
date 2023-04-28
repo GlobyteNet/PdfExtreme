@@ -37,12 +37,12 @@ using PdfExtreme;
 
 namespace PdfExtreme.Fonts.OpenType
 {
-    // TODO: Create a font driver for reading and writing OpenType font files.
+	// TODO: Create a font driver for reading and writing OpenType font files.
 
-    /// <summary>
-    /// Base class for all OpenType tables used in PDFsharp.
-    /// </summary>
-    internal class OpenTypeFontTable : ICloneable
+	/// <summary>
+	/// Base class for all OpenType tables used in PdfExtreme.
+	/// </summary>
+	internal class OpenTypeFontTable : ICloneable
     {
         public OpenTypeFontTable(OpenTypeFontface fontData, string tag)
         {

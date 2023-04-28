@@ -178,7 +178,7 @@ namespace PdfExtreme.Pdf.Annotations
         {
             return new AnnotationsIterator(this);
         }
-        // THHO4STLA: AnnotationsIterator: Implementation does not work http://forum.pdfsharp.net/viewtopic.php?p=3285#p3285
+        // THHO4STLA: AnnotationsIterator: Implementation does not work.
         // Code using the enumerator like this will crash:
         //foreach (var annotation in page.Annotations)
         //{

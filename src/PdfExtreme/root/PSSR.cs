@@ -220,7 +220,7 @@ namespace PdfExtreme
 
         public static string CannotHandleXRefStreams
         {
-            get { return "Cannot handle cross-reference streams. The current implementation of PDFsharp cannot handle this PDF feature introduced with Acrobat 6."; }
+            get { return "Cannot handle cross-reference streams. The current implementation of PdfExtreme cannot handle this PDF feature introduced with Acrobat 6."; }
         }
 
         public static string PasswordRequired
@@ -329,17 +329,17 @@ namespace PdfExtreme
         public static string UnknownEncryption
         {
             get { return GetString(PSMsgID.UnknownEncryption); }
-            //get { return "The PDF document is protected with an encryption not supported by PDFsharp."; }
-        }
+			//get { return "The PDF document is protected with an encryption not supported by PdfExtreme."; }
+		}
 
-        #endregion
+		#endregion
 
-        #region Resource manager
+		#region Resource manager
 
-        /// <summary>
-        /// Gets the resource manager for this module.
-        /// </summary>
-        public static ResourceManager ResMngr
+		/// <summary>
+		/// Gets the resource manager for this module.
+		/// </summary>
+		public static ResourceManager ResMngr
         {
             get
             {

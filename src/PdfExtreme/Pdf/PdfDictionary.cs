@@ -872,19 +872,19 @@ namespace PdfExtreme.Pdf
                         if (true) // || _owner.Document.IsImported)
                         {
                             Type type = GetValueType(key);
-                            Debug.Assert(type != null, "No value type specified in meta information. Please send this file to PDFsharp support.");
+                            Debug.Assert(type != null, "No value type specified in meta information.");
 
 #if !NETFX_CORE
                             if (type != null && type != value.GetType())
                             {
                                 if (typeof(PdfDictionary).IsAssignableFrom(type))
                                 {
-                                    Debug.Assert(value is PdfDictionary, "Bug in PDFsharp. Please send this file to PDFsharp support.");
+                                    Debug.Assert(value is PdfDictionary, "Bug in PdfExtreme.");
                                     value = CreateDictionary(type, (PdfDictionary)value);
                                 }
                                 else if (typeof(PdfArray).IsAssignableFrom(type))
                                 {
-                                    Debug.Assert(value is PdfArray, "Bug in PDFsharp. Please send this file to PDFsharp support.");
+                                    Debug.Assert(value is PdfArray, "Bug in PdfExtreme.");
                                     value = CreateArray(type, (PdfArray)value);
                                 }
                                 else
@@ -897,20 +897,20 @@ namespace PdfExtreme.Pdf
                             {
                                 if (typeof(PdfDictionary).GetTypeInfo().IsAssignableFrom(typeInfo))
                                 {
-                                    Debug.Assert(value is PdfDictionary, "Bug in PDFsharp. Please send this file to PDFsharp support.");
+                                    Debug.Assert(value is PdfDictionary, "Bug in PdfExtreme.");
                                     value = CreateDictionary(type, (PdfDictionary)value);
                                 }
                                 else if (typeof(PdfArray).GetTypeInfo().IsAssignableFrom(typeInfo))
                                 {
-                                    Debug.Assert(value is PdfArray, "Bug in PDFsharp. Please send this file to PDFsharp support.");
+                                    Debug.Assert(value is PdfArray, "Bug in PdfExtreme.");
                                     value = CreateArray(type, (PdfArray)value);
                                 }
                                 else
                                     throw new NotImplementedException("Type other than array or dictionary.");
                             }
 #endif
-                        }
-                        return value;
+						}
+						return value;
                     }
 
                     // Transformation is only possible after PDF import.
@@ -922,7 +922,7 @@ namespace PdfExtreme.Pdf
                             Debug.Assert(!dict.IsIndirect);
 
                             Type type = GetValueType(key);
-                            Debug.Assert(type != null, "No value type specified in meta information. Please send this file to PDFsharp support.");
+                            Debug.Assert(type != null, "No value type specified in meta information.");
                             if (dict.GetType() != type)
                                 dict = CreateDictionary(type, dict);
                             return dict;
@@ -934,7 +934,7 @@ namespace PdfExtreme.Pdf
 
                             Type type = GetValueType(key);
                             // This is more complicated. If type is null do nothing
-                            //Debug.Assert(type != null, "No value type specified in meta information. Please send this file to PDFsharp support.");
+                            //Debug.Assert(type != null, "No value type specified in meta information.");
                             if (type != null && type != array.GetType())
                                 array = CreateArray(type, array);
                             return array;
@@ -1543,7 +1543,7 @@ namespace PdfExtreme.Pdf
         }
 
         /// <summary>
-        /// The PDF stream objects.
+        /// The PDF stream objects. TODO: rebuild this class to contain a PdfDictionary, instead of PdfDictionary containing a PdfStream.
         /// </summary>
         public sealed class PdfStream
         {
@@ -1709,7 +1709,7 @@ namespace PdfExtreme.Pdf
             }
 
             /// <summary>
-            /// Tries to unfilter the bytes of the stream. If the stream is filtered and PDFsharp knows the filter
+            /// Tries to unfilter the bytes of the stream. If the stream is filtered and PdfExtreme knows the filter
             /// algorithm, the stream content is replaced by its unfiltered value and the function returns true.
             /// Otherwise the content remains untouched and the function returns false.
             /// The function is useful for analyzing existing PDF files.
@@ -1721,7 +1721,7 @@ namespace PdfExtreme.Pdf
                     PdfItem filter = _ownerDictionary.Elements["/Filter"];
                     if (filter != null)
                     {
-                        // PDFsharp can only uncompress streams that are compressed with the ZIP or LZH algorithm.
+                        // PdfExtreme can only uncompress streams that are compressed with the ZIP or LZH algorithm.
                         byte[] bytes = Filtering.Decode(_value, filter);
                         if (bytes != null)
                         {
